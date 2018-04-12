@@ -10,13 +10,23 @@ import { Component, OnInit } from '@angular/core';
 export class ListarNoticiasComponent implements OnInit {
 
   noticias;
+  data;
 
   constructor(private noticiaService: NoticiaService) {
-      console.log("chamando noticias");
-      this.noticiaService.getNoticias().subscribe(p=>this.noticias = p);
-   }
-
-  ngOnInit() {
+    console.log("chamando noticias");
+    this.getNoticias();
   }
 
+  getNoticias(){
+    this.noticiaService.getNoticias().subscribe(p => this.noticias = p);
+  }
+
+  ngOnInit() {
+
+  }
+
+  delete(id: String) {
+    console.log("removendo notícia");
+    this.noticiaService.deleteNoticia(id).subscribe(p => this.getNoticias()); 
+  }
 }
