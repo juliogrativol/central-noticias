@@ -1,0 +1,15 @@
+<div class="noticia" *ngFor="let noticia of noticias">
+  <div class="card text-center" >
+    <div class="card-header">
+      {{noticia.informativo}}
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">{{noticia.titulo}}</h5>
+      <p class="card-text">{{noticia.noticia}}</p>
+      <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
+    </div>
+    <div class="card-footer text-muted">
+      {{noticia.autor}} - {{noticia.data}}
+    </div>
+  </div>
+</div>

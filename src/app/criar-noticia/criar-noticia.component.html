@@ -1,0 +1,29 @@
+<div ng-if="mensagem != ''">
+  {{mensagem}}
+<div>
+
+<div>
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate> 
+    <div class="form-group">
+      <label for="informativo">Informativo</label>
+      <input name="informativo" required ngModel type="text" maxlength="60" size="50%" class="form-control" id="informativo" placeholder="digite o informativo da notícia">
+    </div>
+    <div class="form-group">
+      <label for="titulo">Titulo</label>
+      <input name="titulo" ngModel type="text"  maxlength="60" size="50%" class="form-control" id="titulo" placeholder="digite o título da notícia">
+    </div>
+    <div class="form-group">
+      <label for="noticia">Notícia</label>
+      <textarea name="noticia" ngModel class="form-control" maxlength="100" id="noticia" rows="3" placeholder="digite o conteúdo da notícia"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="autor">Autor</label>
+      <input name="autor" ngModel type="text"  maxlength="60" size="50%" class="form-control" id="autor" placeholder="digite o autor da notícia">
+    </div>
+    <div class="form-group">
+      <label for="data">Data</label>
+      <input name="data" ngModel type="date"  maxlength="60" size="50%" class="form-control" id="data" placeholder="data da publicação">
+    </div>
+    <button>Submit</button>
+  </form>
+</div>
