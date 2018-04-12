@@ -1,7 +1,7 @@
 import { Noticia } from './../models/noticia';
 import { Injectable } from '@angular/core';
 
-import { Http, Response} from '@angular/http';
+import { Http, Response, Headers, RequestOptions} from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -20,6 +20,15 @@ export class NoticiaService {
         return this.http.get(this._Url)
             .map((response: Response) => <Noticia[]>response.json())
             .do(data => console.log('All: ' + JSON.stringify(data)))
+            .catch(this.handleError);
+    }
+
+
+    postNoticia(noticia: Noticia): Observable<Noticia> {
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });
+        return this.http.post(this._Url, noticia, options)
+            .map((response: Response) => <Noticia>response.json())
             .catch(this.handleError);
     }
 

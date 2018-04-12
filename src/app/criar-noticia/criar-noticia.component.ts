@@ -1,3 +1,5 @@
+import { Noticia } from './../models/noticia';
+import { NoticiaService } from './../services/noticia.service';
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
 
@@ -9,8 +11,9 @@ import {NgForm} from '@angular/forms';
 export class CriarNoticiaComponent implements OnInit {
 
   mensagem = '';
+  noticia : Noticia;
 
-  constructor() { }
+  constructor(private noticiaService: NoticiaService) { }
 
   ngOnInit() {
     this.mensagem = '';
@@ -36,6 +39,11 @@ export class CriarNoticiaComponent implements OnInit {
         this.mensagem = "Todos os campos são obrigatórios. Preencha corretamente!"
 
     }else {
+
+      this.noticia = new Noticia(null, f.value.autor, f.value.titulo, f.value.noticia, f.value.informativo, f.value.data);
+
+      this.noticiaService.postNoticia(this.noticia).subscribe(p=>this.noticia = p);
+
       this.mensagem = 'Notícia criada com sucesso!';
       console.log(f.value);
       f.resetForm();
